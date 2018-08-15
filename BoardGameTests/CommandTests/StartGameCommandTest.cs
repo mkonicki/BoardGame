@@ -24,9 +24,9 @@ namespace BoardGameTests.CommandTests
             //ACT
             command.Handle(@event);
 
-            //ASSERT
             var storedEvents = store.GetEvents<GameEvent>();
 
+            //ASSERT
             Assert.AreEqual(true, storedEvents.Contains(@event));
             Assert.AreEqual(1, storedEvents.Count);
         }
@@ -43,9 +43,9 @@ namespace BoardGameTests.CommandTests
             command.Handle(firstGame);
             command.Handle(secondGame);
 
-            //ASSERT
             var storedEvents = store.GetEvents<GameEvent>();
 
+            //ASSERT
             Assert.AreEqual(true, storedEvents.Contains(firstGame));
             Assert.AreEqual(true, storedEvents.Contains(secondGame));
             Assert.AreEqual(firstGame, storedEvents.Single(e => e.GameId == firstGame.GameId));

@@ -1,5 +1,4 @@
-﻿using BoardGame;
-using BoardGame.Calculators;
+﻿using BoardGame.Calculators;
 using BoardGame.Commands;
 using BoardGame.Data.Enums;
 using BoardGame.EventStores;
@@ -44,17 +43,14 @@ namespace BoardGameTests.QueryTests
                 new MoveEvent(gameEvent.GameId)
             };
 
+            //ACT
             gameCommand.Handle(gameEvent);
 
-            foreach (var move in moves)
-            {
-                moveCommand.Handle(move);
-            }
-            //ACT
+            moves.ForEach(moveCommand.Handle);
+
             var gameResult = gameResultQuery.Handle(new GameResultEvent { GameId = gameEvent.GameId });
 
-            //ASSERT      
-
+            //ASSERT
             Assert.AreEqual(Direction.East, gameResult.Direction);
             Assert.AreEqual(2, gameResult.X);
             Assert.AreEqual(2, gameResult.Y);
@@ -77,17 +73,14 @@ namespace BoardGameTests.QueryTests
                 new MoveEvent(gameEvent.GameId)
             };
 
+            //ACT
             gameCommand.Handle(gameEvent);
 
-            foreach (var move in moves)
-            {
-                moveCommand.Handle(move);
-            }
-            //ACT
+            moves.ForEach(moveCommand.Handle);
+
             var gameResult = gameResultQuery.Handle(new GameResultEvent { GameId = gameEvent.GameId });
 
-            //ASSERT      
-
+            //ASSERT 
             Assert.AreEqual(Direction.North, gameResult.Direction);
             Assert.AreEqual(3, gameResult.X);
             Assert.AreEqual(2, gameResult.Y);
@@ -108,17 +101,14 @@ namespace BoardGameTests.QueryTests
                 new MoveEvent(gameEvent.GameId)
             };
 
+            //ACT
             gameCommand.Handle(gameEvent);
 
-            foreach (var move in moves)
-            {
-                moveCommand.Handle(move);
-            }
-            //ACT
+            moves.ForEach(moveCommand.Handle);
+
             var gameResult = gameResultQuery.Handle(new GameResultEvent { GameId = gameEvent.GameId });
 
-            //ASSERT      
-
+            //ASSERT
             Assert.AreEqual(Direction.North, gameResult.Direction);
             Assert.AreEqual(0, gameResult.X);
             Assert.AreEqual(4, gameResult.Y);
@@ -142,13 +132,11 @@ namespace BoardGameTests.QueryTests
                 new RotateEvent(gameEvent.GameId, RotateDirection.Right),
             };
 
+            //ACT
             gameCommand.Handle(gameEvent);
 
-            foreach (var move in moves)
-            {
-                moveCommand.Handle(move);
-            }
-            //ACT
+            moves.ForEach(moveCommand.Handle);
+
             var gameResult = gameResultQuery.Handle(new GameResultEvent { GameId = gameEvent.GameId });
 
             //ASSERT      
@@ -183,17 +171,14 @@ namespace BoardGameTests.QueryTests
                 new MoveEvent(gameEvent.GameId),
             };
 
+            //ACT
             gameCommand.Handle(gameEvent);
 
-            foreach (var move in moves)
-            {
-                moveCommand.Handle(move);
-            }
-            //ACT
+            moves.ForEach(moveCommand.Handle);
+
             var gameResult = gameResultQuery.Handle(new GameResultEvent { GameId = gameEvent.GameId });
 
-            //ASSERT      
-
+            //ASSERT 
             Assert.AreEqual(Direction.East, gameResult.Direction);
             Assert.AreEqual(4, gameResult.X);
             Assert.AreEqual(4, gameResult.Y);

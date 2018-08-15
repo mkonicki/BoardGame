@@ -1,4 +1,3 @@
-using BoardGame;
 using BoardGame.Commands;
 using BoardGame.Data.Enums;
 using BoardGame.EventStores;
@@ -27,9 +26,9 @@ namespace BoardGameTests.CommandTests
             //ACT
             command.Handle(@event);
 
-            //ASSERT
             var storedEvents = store.GetEvents<MoveEvent>();
 
+            //ASSERT
             Assert.AreEqual(true, storedEvents.Contains(@event));
             Assert.AreEqual(1, storedEvents.Count);
         }
@@ -45,9 +44,9 @@ namespace BoardGameTests.CommandTests
             //ACT
             command.Handle(@event);
 
-            //ASSERT
             var storedEvents = store.GetEvents<MoveEvent>();
 
+            //ASSERT
             Assert.AreEqual(true, storedEvents.Contains(@event));
             Assert.AreEqual(1, storedEvents.Count);
         }
