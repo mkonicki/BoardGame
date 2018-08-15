@@ -16,14 +16,29 @@ namespace BoardGameTests.CommandTests
         public void Initalize() => store = new EventStore();
 
         [TestMethod]
-        public void StoreMovesTest()
+        public void StoreMovesEventTest()
         {
             //ARRANGE
-            var @event = new MoveEvent
-            {
-                GameId = new Guid(),
-                Direction = Direction.East
-            };
+            var @event = new MoveEvent(new Guid());
+
+            var command = new MoveCommand(store);
+
+            //ACT
+            command.Handle(@event);
+
+            //ASSERT
+            var storedEvents = store.GetEvents<MoveEvent>();
+
+            Assert.AreEqual(true, storedEvents.Contains(@event));
+            Assert.AreEqual(1, storedEvents.Count);
+        }
+
+        [TestMethod]
+        public void StoreTurnsEventTest()
+        {
+            //ARRANGE
+            var @event = new RotateEvent(new Guid(), RotateDirection.Left);
+
             var command = new MoveCommand(store);
 
             //ACT

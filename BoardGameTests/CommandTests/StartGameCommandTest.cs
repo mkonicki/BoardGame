@@ -18,14 +18,14 @@ namespace BoardGameTests.CommandTests
         public void StartGame()
         {
             //ARRANGE
-            var @event = new StartGameEvent();
-            var command = new StartGameCommand(store);
+            var @event = new GameEvent();
+            var command = new GameCommand(store);
 
             //ACT
             command.Handle(@event);
 
             //ASSERT
-            var storedEvents = store.GetEvents<StartGameEvent>();
+            var storedEvents = store.GetEvents<GameEvent>();
 
             Assert.AreEqual(true, storedEvents.Contains(@event));
             Assert.AreEqual(1, storedEvents.Count);
@@ -35,16 +35,16 @@ namespace BoardGameTests.CommandTests
         public void EachGameHasDiffrentId()
         {
             //ARRANGE
-            var firstGame = new StartGameEvent();
-            var secondGame = new StartGameEvent();
-            var command = new StartGameCommand(store);
+            var firstGame = new GameEvent();
+            var secondGame = new GameEvent();
+            var command = new GameCommand(store);
 
             //ACT
             command.Handle(firstGame);
             command.Handle(secondGame);
 
             //ASSERT
-            var storedEvents = store.GetEvents<StartGameEvent>();
+            var storedEvents = store.GetEvents<GameEvent>();
 
             Assert.AreEqual(true, storedEvents.Contains(firstGame));
             Assert.AreEqual(true, storedEvents.Contains(secondGame));
