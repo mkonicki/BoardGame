@@ -1,5 +1,6 @@
 ﻿using BoardGame.Calculators;
 using BoardGame.Commands;
+using BoardGame.Data;
 using BoardGame.EventStores;
 using BoardGame.EventStores.Interfaces;
 using BoardGame.Queries.Interfaces;

@@ -1,4 +1,5 @@
 ﻿using BoardGame.Commands.Interfaces;
+using BoardGame.Data.Enums;
 using BoardGame.EventStores;
 using BoardGame.EventStores.Interfaces;
 using System;
@@ -37,6 +38,4 @@ namespace BoardGame.Commands
             RotateDirection = rotateDirection;
         }
     }
-
-
 }

@@ -1,4 +1,6 @@
 ﻿using BoardGame.Commands;
+using BoardGame.Data;
+using BoardGame.Data.Enums;
 using System;
 using System.Collections.Generic;
 

@@ -1,4 +1,5 @@
 ﻿using BoardGame.Commands.Interfaces;
+using BoardGame.Data;
 using BoardGame.EventStores;
 using BoardGame.EventStores.Interfaces;
 using System;

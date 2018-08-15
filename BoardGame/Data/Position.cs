@@ -1,4 +1,6 @@
-﻿namespace BoardGame
+﻿using BoardGame.Data.Enums;
+
+namespace BoardGame.Data
 {
     public class Position
     {

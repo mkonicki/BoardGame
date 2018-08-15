@@ -1,4 +1,4 @@
-﻿namespace BoardGame
+﻿namespace BoardGame.Data.Enums
 {
     public enum RotateDirection
     {

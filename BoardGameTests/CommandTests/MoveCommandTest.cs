@@ -1,5 +1,6 @@
 using BoardGame;
 using BoardGame.Commands;
+using BoardGame.Data.Enums;
 using BoardGame.EventStores;
 using BoardGame.EventStores.Interfaces;
 using Microsoft.VisualStudio.TestTools.UnitTesting;
