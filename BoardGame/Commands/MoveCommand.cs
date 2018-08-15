@@ -21,6 +21,22 @@ namespace BoardGame.Commands
     public class MoveEvent : IEvent
     {
         public Guid GameId { get; set; }
-        public Direction Direction { get; set; }
+
+        public MoveEvent(Guid gameId)
+        {
+            GameId = gameId;
+        }
     }
+
+    public class RotateEvent : MoveEvent
+    {
+        public RotateDirection RotateDirection;
+
+        public RotateEvent(Guid gameId, RotateDirection rotateDirection) : base(gameId)
+        {
+            RotateDirection = rotateDirection;
+        }
+    }
+
+
 }

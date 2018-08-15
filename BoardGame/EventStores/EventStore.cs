@@ -21,7 +21,8 @@ namespace BoardGame.EventStores
 
         public ICollection<T> GetEvents<T>() where T : IEvent
         {
-            return Events.Where(e => e.GetType() == typeof(T))
+            return Events
+                .Where(e => e.GetType() == typeof(T) || e.GetType().BaseType == typeof(T))
                 .Select(e => (T)e)
                 .ToList();
         }

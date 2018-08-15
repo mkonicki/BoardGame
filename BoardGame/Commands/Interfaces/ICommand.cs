@@ -1,4 +1,4 @@
-﻿using BoardGame.EventStores;
+﻿using BoardGame.EventStores.Interfaces;
 
 namespace BoardGame.Commands.Interfaces
 {
@@ -10,6 +10,7 @@ namespace BoardGame.Commands.Interfaces
 
     public interface ICommand<TEvent, TResponse>
         where TEvent : IEvent
+        where TResponse : new()
     {
         TResponse Handle(TEvent @event);
     }
